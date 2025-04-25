@@ -1,13 +1,13 @@
-import React from 'react'
-import Rating from './Components/Rating/Rating'
+import React from "react";
+import Todo from "./Components/Rating/Todo";
 
 const App = () => {
   return (
-    <div className='app'>
-      <h1 style={{textAlign:"center"}}>Solve Problem Machine</h1>
-      <Rating/>
+    <div className="app">
+      <h1 style={{ textAlign: "center" }}>Solve Machine Coding</h1>
+      <Todo />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
