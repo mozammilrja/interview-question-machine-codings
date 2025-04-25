@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 // Add Todo
-// Delete todo
-// Edit todo
+// Delete todos
+// Edit todos
 // Complete toddo
 
 const Todo = () => {
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
   const [inputVal, setInputVal] = useState("");
+  const [edit, setEdit] = useState(null);
 
-  const handleTodo = () => {
+  const handleAddOrEdit = () => {
     if (inputVal.trim()) {
-      setTodo([...todo, inputVal]);
+      if (edit !== null) {
+        //update todos
+        const updateTodos = [...todos];
+        updateTodos[edit] = inputVal;
+        setTodos(updateTodos);
+        setEdit(null);
+      } else {
+        //add todo
+        setTodos([...todos, inputVal]);
+      }
     }
   };
-  console.log("todo :>> ", todo);
+  console.log("todos :>> ", todos);
 
+  //Delete
   const handleDeleteTodo = (id) => {
-    if (todo) {
-      setTodo(todo.filter((item, index) => index !== id));
+    if (todos) {
+      setTodos(todos.filter((item, index) => index !== id));
     }
+  };
+
+  const handleEditTodo = (id) => {
+    setInputVal(todos[id]);
+    setEdit(id);
   };
 
   return (
@@ -30,12 +46,24 @@ const Todo = () => {
         name="inputVal"
         onChange={(e) => setInputVal(e.target.value)}
       />
-      <button onClick={handleTodo}>Add</button>
+      <button onClick={handleAddOrEdit}>
+        {edit !== null ? "Update" : "Add"}
+      </button>
 
       <ul>
-        {todo.map((item, id) => (
-          <li style={{ gap: "20px" }} key={id}>
-            {item}
+        {todos.map((item, id) => (
+          <li
+            key={id}
+            style={{
+              marginBottom: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+            }}
+          >
+            <span> {item}</span>
+            <button onClick={() => handleEditTodo(id)}>Edit</button>
             <button onClick={() => handleDeleteTodo(id)}>Delete</button>
           </li>
         ))}
