@@ -1,7 +1,11 @@
 import React from "react";
 
 const Typeahead = () => {
-  return <div>Typeahead</div>;
+  return (
+    <>
+      <h1>Typehead</h1>
+    </>
+  );
 };
 
 export default Typeahead;
