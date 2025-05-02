@@ -1,11 +1,10 @@
 import React from "react";
-import Typeahead from "./Components/Typeahead/Typeahead";
-
+import InfiniteScroll from "./Components/InfiniteScroll/InfiniteScroll";
 const App = () => {
   return (
     <div className="app">
       <h1 style={{ textAlign: "center" }}>Solve Machine Coding</h1>
-      <Typeahead />
+      <InfiniteScroll />
     </div>
   );
 };
